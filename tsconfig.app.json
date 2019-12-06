@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "allowJs": true,
     "types": []
   },
   "files": [
@@ -13,6 +14,8 @@
   ],
   "exclude": [
     "src/test.ts",
-    "src/**/*.spec.ts"
+    "**/*.stories.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts"
   ]
 }

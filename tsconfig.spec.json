@@ -1,7 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
     "outDir": "./out-tsc/spec",
+    "module": "es2015",
+    "allowJs": true,
     "types": [
       "jasmine",
       "node"

@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "jest": "jest",
+    "jest:watch": "jest --watch"
   },
   "private": true,
   "dependencies": {
@@ -24,24 +28,96 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-builders/jest": "^8.3.2",
     "@angular-devkit/build-angular": "~0.803.20",
     "@angular/cli": "~8.3.20",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
+    "@babel/core": "^7.7.4",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-notes": "^5.2.8",
+    "@storybook/addon-storyshots": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/angular": "^5.2.8",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-require-context-hook": "^1.0.0",
     "codelyzer": "^5.0.0",
+    "core-js": "^2.6.10",
+    "css-loader": "^3.2.1",
+    "dotenv-webpack": "^1.7.0",
+    "identity-obj-proxy": "^3.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^24.9.0",
+    "jest-preset-angular": "^8.0.0",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "protractor": "~5.4.0",
+    "style-loader": "^1.0.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false,
+        "isolatedModules": true,
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$",
+        "astTransformers": [
+          "jest-preset-angular/build/InlineFilesTransformer",
+          "jest-preset-angular/build/StripStylesTransformer"
+        ]
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/jest-config/",
+      "/node_modules/"
+    ],
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/jest-config/setup.ts"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-preset-angular/build/AngularSnapshotSerializer.js",
+      "<rootDir>/node_modules/jest-preset-angular/build/HTMLCommentSerializer.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/@jest/transform/build",
+      "/build/",
+      "/storybook-static/",
+      "<rootDir>/src/test.ts"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@storybook/*)"
+    ],
+    "transform": {
+      "^.+\\.(ts|html|js)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy",
+      "^src/(.*)$": "<rootDir>/src/$1",
+      "^app/(.*)$": "<rootDir>/src/app/$1",
+      "^assets/(.*)$": "<rootDir>/src/assets/$1",
+      "^environments/(.*)$": "<rootDir>/src/environments/$1"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
