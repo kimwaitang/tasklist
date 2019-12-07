@@ -8,9 +8,9 @@ import { PureInboxScreenComponent } from '../components/pure-inbox-screen.compon
 
 storiesOf('InboxScreen', module).addDecorator(
 moduleMetadata({
-  imports: [TaskModule, NgxsModule.forRoot([TasksState])],
-  declarations: [InboxScreenComponent, PureInboxScreenComponent, TaskListComponent],
-  providers: [Store],
+  imports: [TaskModule],
+  declarations: [InboxScreenComponent,PureInboxScreenComponent,TaskListComponent],
+  providers: [],
 }))
 .add('default', () => {
   return {

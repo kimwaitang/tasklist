@@ -13,7 +13,6 @@ import { TaskListComponent } from './containers/task-list.component';
   imports: [CommonModule, NgxsModule.forRoot([TasksState])],
   exports: [ TaskComponent, PureTaskListComponent],
   declarations: [ TaskComponent, PureTaskListComponent],
-  providers: [],
+  providers: [Store],
 })
 export class TaskModule {}
-

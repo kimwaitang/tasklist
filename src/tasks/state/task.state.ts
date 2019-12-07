@@ -1,5 +1,5 @@
 import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { Task } from '../task.model';
+import { Task } from '../models/task.model';
 
 export const actions = {
   ARCHIVE_TASK: 'ARCHIVE_TASK',
